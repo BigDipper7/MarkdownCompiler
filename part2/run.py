@@ -7,7 +7,7 @@
 import sys
 
 tokens = (
-    'H1','H2','H3', 'CR', 'TEXT','STRONG','SYMBOL','EM','HR','H','CODE','LBRAC','RBRAC','LBOXBRAC','RBOXBRAC','LANGLEBRAC','RANGLEBRAC','UL','OL','CODEBLOCK'
+    'H1','H2','H3', 'CR', 'TEXT','STRONG','SYMBOL','EM','HR','H','CODE','LBRAC','RBRAC','LBOXBRAC','RBOXBRAC','LANGLEBRAC','RANGLEBRAC','UL','OL'
     )
 
 # Tokens
@@ -17,7 +17,7 @@ t_H3 = r'\#\#\# '
 
 t_STRONG = r'\*\* |\_\_'
 
-t_SYMBOL = r'[\,\.\!\?\:\;\/\"\{\}]'
+t_SYMBOL = r'[\,\.\!\?\:\;\/]'
 
 t_EM = r'\* |\_'
 
@@ -43,10 +43,8 @@ t_UL = r'\+'
 
 t_OL= r'\d\.'
 
-t_CODEBLOCK=r'\'\''
-
 def t_TEXT(t):
-    r'[a-zA-Z0-9\'\ ]+'
+    r'[a-zA-Z\' ]+'
     t.value = str(t.value)
     return t
 
@@ -74,47 +72,43 @@ names = {}
 
 def p_body(p):
     '''body : statement'''
-    print '''<head>
-<script type="text/javascript" src="scripts/shCore.js"></script>
-<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
-<link href="styles/shCore.css" rel="stylesheet" type="text/css" />
-<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
-<script type="text/javascript">SyntaxHighlighter.all();</script>
-</head>
-    '''+'<body>' + p[1] + '</body>'
+    print '<body>' + p[1] + '</body>'
 
 def p_state(p):
     '''statement : expression
-            | statement CR expression'''
+            | statement expression'''
     if (len(p)==2):
         p[0] = p[1]
-    elif (len(p) == 4):
-        p[0] = str(p[1]) + str(p[3])
+    elif (len(p) == 3):
+        p[0] = str(p[1]) + str(p[2])
 
 def p_exp_cr(p):
-    '''expression : phrase
-                | H1 phrase
-                | H2 phrase
-                | H3 phrase
-                | HR
-                | H
-                | hr'''
+    '''expression : phrase CR
+                | H1 phrase CR
+                | H2 phrase CR
+                | H3 phrase CR
+                | HR CR
+                | H CR
+                | hr CR
+                | UL phrase CR'''
     if p[1] == '#':
         p[0] = '<h1>' + str(p[2]) + '</h1>'
     elif p[1] == '##':
         p[0] = '<h2>' + str(p[2]) + '</h2>'
-    elif p[1] == '###': 
+    elif p[1] == '###':
         p[0] = '<h3>' + str(p[2]) + '</h3>'
     elif p[1] == '---':
         p[0] = '<hr/>'
-    elif p[1] == '===': 
+    elif p[1] == '===':
         p[0] = '<h1></h1>'
     elif p[1] == '***':
         p[0] = '<hr/>'
-    elif (len(p) == 2):
+    elif p[1] == '+':
+        p[0] = '<ul><li>' + str(p[2]) +'</li><ul>'
+    elif (len(p) == 3):
         p[0] = '<p>' + str(p[1]) + '</p>'
 
-def p_exp_ul(p):
+def p_exp_ulli(p):
     '''expression : ul'''
     p[0] = '<ul>' + str(p[1]) + '</ul>'
 
@@ -132,7 +126,6 @@ def p_phrase(p):
                 | code_fact CODE
                 | anglebrac_fact RANGLEBRAC
                 | name brac_fact RBRAC
-                | codeblock_fact CODEBLOCK
                  '''
     if (len(p) == 2):
         p[0] = str(p[1])
@@ -144,8 +137,6 @@ def p_phrase(p):
         p[0] = '<code>' + str(p[1]) + '</code>'
     elif p[2] == '>':
         p[0] = '<a href="' + str(p[1]) + '">' + str(p[1]) + '</a>'
-    elif p[2] == '\'\'':
-        p[0] = p[1] + "</pre>"
     elif (len(p) == 4):
         p[0] = '<a href="' + str(p[2]) + '">' + str(p[1]) + '</a>'
     elif (len(p) == 3):
@@ -217,7 +208,7 @@ def p_ul_fact(p):
     '''ul_fact :  ul_fact factor
                 | UL factor
                 | ul_fact SYMBOL'''
-    if p[1] == '*' or p[1] == '+' or p[1] == '_':
+    if  p[1] == '+' :
         p[0] = str(p[2])
     else:
         p[0] = str(p[1]) + str(p[2])
@@ -231,15 +222,15 @@ def p_ul(p):
     '''ul :  ul ulli
            | ulli'''
     if(len(p) == 2):
-        p[0] = str(p[1])
+       p[0] = str(p[1])
     elif(len(p) == 3):
-        p[0] = str(p[1]) + str(p[2]) 
+       p[0] = str(p[1]) + str(p[2])
 
 def p_ol_fact(p):
     '''ol_fact :  ol_fact factor
                 | OL factor
                 | ol_fact SYMBOL'''
-    if p[1] == '\d\.':
+    if p[1] == '1.':
         p[0] = str(p[2])
     else:
         p[0] = str(p[1]) + str(p[2])
@@ -254,19 +245,7 @@ def p_ol(p):
     if(len(p) == 2):
         p[0] = str(p[1])
     elif(len(p) == 3):
-        p[0] = str(p[1]) + str(p[2]) 
-
-def p_codeblock_fact(p):
-    '''codeblock_fact : codeblock_fact factor
-            | CODEBLOCK factor
-            | codeblock_fact SYMBOL
-            | codeblock_fact CR factor'''
-    if (p[1] == '\'\''):
-        p[0] = "<pre class='brush: js'>"+str(p[1])
-    elif len(p) == 4:
-        p[0] = p[1]+str(p[3])
-    else:
-        p[0] = p[1]+str(p[2])
+        p[0] = str(p[1]) + str(p[2])
 
 def p_factor_text(p):
     "factor : TEXT"
@@ -282,5 +261,5 @@ import ply.yacc as yacc
 yacc.yacc()
 
 if __name__ == '__main__':
-    filename = 'test233.md'
+    filename = 'test02.md'
     yacc.parse(open(filename).read())

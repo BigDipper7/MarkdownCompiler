@@ -5,31 +5,35 @@ Grammar
 Rule 0     S' -> body
 Rule 1     body -> statement
 Rule 2     statement -> expression
-Rule 3     statement -> statement CR expression
-Rule 4     expression -> CR expression
-Rule 5     expression -> factor
-Rule 6     expression -> H1 factor
-Rule 7     expression -> H2 factor
-Rule 8     expression -> H3 factor
-Rule 9     expression -> STRONG
-Rule 10    factor -> TEXT
+Rule 3     expression -> expression CR
+Rule 4     expression -> expression CR setence
+Rule 5     expression -> setence
+Rule 6     setence -> factor
+Rule 7     setence -> phrase
+Rule 8     phrase -> H1 factor
+Rule 9     phrase -> H2 factor
+Rule 10    phrase -> H3 factor
+Rule 11    phrase -> STRONG
+Rule 12    factor -> TEXT
 
 Terminals, with rules where they appear
 
 CR                   : 3 4
-H1                   : 6
-H2                   : 7
-H3                   : 8
-STRONG               : 9
-TEXT                 : 10
+H1                   : 8
+H2                   : 9
+H3                   : 10
+STRONG               : 11
+TEXT                 : 12
 error                : 
 
 Nonterminals, with rules where they appear
 
 body                 : 0
 expression           : 2 3 4
-factor               : 5 6 7 8
-statement            : 1 3
+factor               : 6 8 9 10
+phrase               : 7
+setence              : 4 5
+statement            : 1
 
 Parsing method: LALR
 
@@ -38,26 +42,29 @@ state 0
     (0) S' -> . body
     (1) body -> . statement
     (2) statement -> . expression
-    (3) statement -> . statement CR expression
-    (4) expression -> . CR expression
-    (5) expression -> . factor
-    (6) expression -> . H1 factor
-    (7) expression -> . H2 factor
-    (8) expression -> . H3 factor
-    (9) expression -> . STRONG
-    (10) factor -> . TEXT
+    (3) expression -> . expression CR
+    (4) expression -> . expression CR setence
+    (5) expression -> . setence
+    (6) setence -> . factor
+    (7) setence -> . phrase
+    (12) factor -> . TEXT
+    (8) phrase -> . H1 factor
+    (9) phrase -> . H2 factor
+    (10) phrase -> . H3 factor
+    (11) phrase -> . STRONG
 
-    CR              shift and go to state 8
-    H1              shift and go to state 4
-    H2              shift and go to state 2
-    H3              shift and go to state 3
-    STRONG          shift and go to state 9
-    TEXT            shift and go to state 5
+    TEXT            shift and go to state 4
+    H1              shift and go to state 5
+    H2              shift and go to state 3
+    H3              shift and go to state 7
+    STRONG          shift and go to state 10
 
     body                           shift and go to state 1
-    expression                     shift and go to state 10
-    statement                      shift and go to state 6
-    factor                         shift and go to state 7
+    setence                        shift and go to state 2
+    statement                      shift and go to state 8
+    factor                         shift and go to state 9
+    phrase                         shift and go to state 6
+    expression                     shift and go to state 11
 
 state 1
 
@@ -67,150 +74,140 @@ state 1
 
 state 2
 
-    (7) expression -> H2 . factor
-    (10) factor -> . TEXT
+    (5) expression -> setence .
 
-    TEXT            shift and go to state 5
+    CR              reduce using rule 5 (expression -> setence .)
+    $end            reduce using rule 5 (expression -> setence .)
 
-    factor                         shift and go to state 11
 
 state 3
 
-    (8) expression -> H3 . factor
-    (10) factor -> . TEXT
+    (9) phrase -> H2 . factor
+    (12) factor -> . TEXT
 
-    TEXT            shift and go to state 5
+    TEXT            shift and go to state 4
 
     factor                         shift and go to state 12
 
 state 4
 
-    (6) expression -> H1 . factor
-    (10) factor -> . TEXT
+    (12) factor -> TEXT .
 
-    TEXT            shift and go to state 5
+    CR              reduce using rule 12 (factor -> TEXT .)
+    $end            reduce using rule 12 (factor -> TEXT .)
 
-    factor                         shift and go to state 13
 
 state 5
 
-    (10) factor -> TEXT .
+    (8) phrase -> H1 . factor
+    (12) factor -> . TEXT
 
-    CR              reduce using rule 10 (factor -> TEXT .)
-    $end            reduce using rule 10 (factor -> TEXT .)
+    TEXT            shift and go to state 4
 
+    factor                         shift and go to state 13
 
 state 6
 
-    (1) body -> statement .
-    (3) statement -> statement . CR expression
+    (7) setence -> phrase .
 
-    $end            reduce using rule 1 (body -> statement .)
-    CR              shift and go to state 14
+    CR              reduce using rule 7 (setence -> phrase .)
+    $end            reduce using rule 7 (setence -> phrase .)
 
 
 state 7
 
-    (5) expression -> factor .
+    (10) phrase -> H3 . factor
+    (12) factor -> . TEXT
 
-    CR              reduce using rule 5 (expression -> factor .)
-    $end            reduce using rule 5 (expression -> factor .)
+    TEXT            shift and go to state 4
 
+    factor                         shift and go to state 14
 
 state 8
 
-    (4) expression -> CR . expression
-    (4) expression -> . CR expression
-    (5) expression -> . factor
-    (6) expression -> . H1 factor
-    (7) expression -> . H2 factor
-    (8) expression -> . H3 factor
-    (9) expression -> . STRONG
-    (10) factor -> . TEXT
+    (1) body -> statement .
 
-    CR              shift and go to state 8
-    H1              shift and go to state 4
-    H2              shift and go to state 2
-    H3              shift and go to state 3
-    STRONG          shift and go to state 9
-    TEXT            shift and go to state 5
+    $end            reduce using rule 1 (body -> statement .)
 
-    expression                     shift and go to state 15
-    factor                         shift and go to state 7
 
 state 9
 
-    (9) expression -> STRONG .
+    (6) setence -> factor .
 
-    CR              reduce using rule 9 (expression -> STRONG .)
-    $end            reduce using rule 9 (expression -> STRONG .)
+    CR              reduce using rule 6 (setence -> factor .)
+    $end            reduce using rule 6 (setence -> factor .)
 
 
 state 10
 
-    (2) statement -> expression .
+    (11) phrase -> STRONG .
 
-    CR              reduce using rule 2 (statement -> expression .)
-    $end            reduce using rule 2 (statement -> expression .)
+    CR              reduce using rule 11 (phrase -> STRONG .)
+    $end            reduce using rule 11 (phrase -> STRONG .)
 
 
 state 11
 
-    (7) expression -> H2 factor .
+    (2) statement -> expression .
+    (3) expression -> expression . CR
+    (4) expression -> expression . CR setence
 
-    CR              reduce using rule 7 (expression -> H2 factor .)
-    $end            reduce using rule 7 (expression -> H2 factor .)
+    $end            reduce using rule 2 (statement -> expression .)
+    CR              shift and go to state 15
 
 
 state 12
 
-    (8) expression -> H3 factor .
+    (9) phrase -> H2 factor .
 
-    CR              reduce using rule 8 (expression -> H3 factor .)
-    $end            reduce using rule 8 (expression -> H3 factor .)
+    CR              reduce using rule 9 (phrase -> H2 factor .)
+    $end            reduce using rule 9 (phrase -> H2 factor .)
 
 
 state 13
 
-    (6) expression -> H1 factor .
+    (8) phrase -> H1 factor .
 
-    CR              reduce using rule 6 (expression -> H1 factor .)
-    $end            reduce using rule 6 (expression -> H1 factor .)
+    CR              reduce using rule 8 (phrase -> H1 factor .)
+    $end            reduce using rule 8 (phrase -> H1 factor .)
 
 
 state 14
 
-    (3) statement -> statement CR . expression
-    (4) expression -> . CR expression
-    (5) expression -> . factor
-    (6) expression -> . H1 factor
-    (7) expression -> . H2 factor
-    (8) expression -> . H3 factor
-    (9) expression -> . STRONG
-    (10) factor -> . TEXT
+    (10) phrase -> H3 factor .
 
-    CR              shift and go to state 8
-    H1              shift and go to state 4
-    H2              shift and go to state 2
-    H3              shift and go to state 3
-    STRONG          shift and go to state 9
-    TEXT            shift and go to state 5
+    CR              reduce using rule 10 (phrase -> H3 factor .)
+    $end            reduce using rule 10 (phrase -> H3 factor .)
 
-    expression                     shift and go to state 16
-    factor                         shift and go to state 7
 
 state 15
 
-    (4) expression -> CR expression .
+    (3) expression -> expression CR .
+    (4) expression -> expression CR . setence
+    (6) setence -> . factor
+    (7) setence -> . phrase
+    (12) factor -> . TEXT
+    (8) phrase -> . H1 factor
+    (9) phrase -> . H2 factor
+    (10) phrase -> . H3 factor
+    (11) phrase -> . STRONG
 
-    CR              reduce using rule 4 (expression -> CR expression .)
-    $end            reduce using rule 4 (expression -> CR expression .)
+    CR              reduce using rule 3 (expression -> expression CR .)
+    $end            reduce using rule 3 (expression -> expression CR .)
+    TEXT            shift and go to state 4
+    H1              shift and go to state 5
+    H2              shift and go to state 3
+    H3              shift and go to state 7
+    STRONG          shift and go to state 10
 
+    phrase                         shift and go to state 6
+    setence                        shift and go to state 16
+    factor                         shift and go to state 9
 
 state 16
 
-    (3) statement -> statement CR expression .
+    (4) expression -> expression CR setence .
 
-    CR              reduce using rule 3 (statement -> statement CR expression .)
-    $end            reduce using rule 3 (statement -> statement CR expression .)
+    CR              reduce using rule 4 (expression -> expression CR setence .)
+    $end            reduce using rule 4 (expression -> expression CR setence .)
 

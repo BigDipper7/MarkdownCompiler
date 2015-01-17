@@ -5,10 +5,12 @@ statement
 statement CR
 
 
-statement :
+statement : expression
 
+expression : sentence
 
+sentence : CR sentence | factor| phrase
 
-expression : H1 TEXT | H2 TEXT | H3 TEXT
+phrase : H1 factor CR | H2 factor CR | H3 factor CR | STRONG factor STRONG
 
 factor : TEXT

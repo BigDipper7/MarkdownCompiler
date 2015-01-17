@@ -18,7 +18,7 @@ t_H3 = r'\#\#\#\ '
 t_STRONG = r'\*\*'
 
 def t_TEXT(t):
-    r'[_a-zA-Z0-9\ ]+'
+    r'[_a-zA-Z0-9\ \,\.\']+'
     t.value = str(t.value)
     return t
 
@@ -85,5 +85,5 @@ import ply.yacc as yacc
 yacc.yacc()
 
 if __name__ == '__main__':
-    filename = 'test01.md'
+    filename = 'test1.md'
     yacc.parse(open(filename).read())

@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = '!\x02E\xadP\xde\xc1\x90\xedV\xfcae\x8cD\x90'
+_lr_signature = "\xc7\xce\x08y\xa5'j\x8fK\x170\xa9u\xd6\xee\xfc"
     
-_lr_action_items = {'H2':([0,15,],[3,3,]),'TEXT':([0,3,5,7,15,],[4,4,4,4,4,]),'H1':([0,15,],[5,5,]),'H3':([0,15,],[7,7,]),'CR':([2,4,6,9,10,11,12,13,14,15,16,],[-5,-12,-7,-6,-11,15,-9,-8,-10,-3,-4,]),'STRONG':([0,15,],[10,10,]),'$end':([1,2,4,6,8,9,10,11,12,13,14,15,16,],[0,-5,-12,-7,-1,-6,-11,-2,-9,-8,-10,-3,-4,]),}
+_lr_action_items = {'EM':([0,1,2,5,6,11,13,16,17,18,21,22,23,24,27,28,29,31,34,35,36,38,39,40,41,],[2,21,23,-29,26,-11,35,26,26,26,-16,-21,-23,-22,-13,-11,26,-15,2,-24,-17,26,26,26,-18,]),'CODE':([0,5,6,11,15,16,17,18,21,25,27,28,29,31,34,36,37,38,39,40,41,],[3,-29,3,-11,36,3,3,3,-16,-26,-13,-11,3,-15,3,-17,-25,3,3,3,-18,]),'H2':([0,34,],[16,16,]),'H3':([0,34,],[17,17,]),'SYMBOL':([5,6,11,21,27,28,29,31,36,38,39,40,41,],[-29,27,-11,-16,-13,-11,27,-15,-17,27,27,27,-18,]),'H1':([0,34,],[18,18,]),'RANGLEBRAC':([5,19,33,42,],[-29,41,-28,-27,]),'HR':([0,34,],[4,4,]),'LANGLEBRAC':([0,5,6,11,16,17,18,21,27,28,29,31,34,36,38,39,40,41,],[9,-29,9,-11,9,9,9,-16,-13,-11,9,-15,9,-17,9,9,9,-18,]),'H':([0,34,],[14,14,]),'TEXT':([0,1,2,3,5,6,7,8,9,11,15,16,17,18,19,21,22,24,25,26,27,28,29,30,31,32,33,34,36,37,38,39,40,41,42,],[5,5,5,5,-29,5,5,5,5,-11,5,5,5,5,5,-16,-21,-22,-26,5,-13,-11,5,-20,-15,-19,-28,5,-17,-25,5,5,5,-18,-27,]),'CR':([4,5,6,10,11,13,14,20,21,23,27,28,29,31,35,36,38,39,40,41,43,],[-8,-29,-4,34,-11,-10,-9,-2,-16,-23,-13,-11,-14,-15,-24,-17,-6,-7,-5,-18,-3,]),'STRONG':([0,5,6,8,11,16,17,18,21,27,28,29,30,31,32,34,36,38,39,40,41,],[7,-29,7,31,-11,7,7,7,-16,-13,-11,7,-20,-15,-19,7,-17,7,7,7,-18,]),'$end':([4,5,6,10,11,12,13,14,20,21,23,27,28,29,31,35,36,38,39,40,41,43,],[-8,-29,-4,-1,-11,0,-10,-9,-2,-16,-23,-13,-11,-14,-15,-24,-17,-6,-7,-5,-18,-3,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'body':([0,],[1,]),'setence':([0,15,],[2,16,]),'statement':([0,],[8,]),'factor':([0,3,5,7,15,],[9,12,13,14,9,]),'phrase':([0,15,],[6,6,]),'expression':([0,],[11,]),}
+_lr_goto_items = {'body':([0,],[12,]),'em_fact':([0,6,16,17,18,29,34,38,39,40,],[1,1,1,1,1,1,1,1,1,1,]),'hr':([0,34,],[13,13,]),'strong_fact':([0,6,16,17,18,29,34,38,39,40,],[8,8,8,8,8,8,8,8,8,8,]),'anglebrac_fact':([0,6,16,17,18,29,34,38,39,40,],[19,19,19,19,19,19,19,19,19,19,]),'code_fact':([0,6,16,17,18,29,34,38,39,40,],[15,15,15,15,15,15,15,15,15,15,]),'statement':([0,],[10,]),'factor':([0,1,2,3,6,7,8,9,15,16,17,18,19,26,29,34,38,39,40,],[11,22,24,25,28,30,32,33,37,11,11,11,42,24,28,11,28,28,28,]),'phrase':([0,6,16,17,18,29,34,38,39,40,],[6,29,38,39,40,29,6,29,29,29,]),'expression':([0,34,],[20,43,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -26,16 +26,33 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> body","S'",1,None,None,None),
-  ('body -> statement','body',1,'p_body','dev.py',47),
-  ('statement -> expression','statement',1,'p_state','dev.py',51),
-  ('expression -> expression CR','expression',2,'p_expression','dev.py',59),
-  ('expression -> expression CR setence','expression',3,'p_expression','dev.py',60),
-  ('expression -> setence','expression',1,'p_expression','dev.py',61),
-  ('setence -> factor','setence',1,'p_setence','dev.py',68),
-  ('setence -> phrase','setence',1,'p_setence','dev.py',69),
-  ('phrase -> H1 factor','phrase',2,'p_phrase','dev.py',73),
-  ('phrase -> H2 factor','phrase',2,'p_phrase','dev.py',74),
-  ('phrase -> H3 factor','phrase',2,'p_phrase','dev.py',75),
-  ('phrase -> STRONG','phrase',1,'p_phrase','dev.py',76),
-  ('factor -> TEXT','factor',1,'p_factor_text','dev.py',87),
+  ('body -> statement','body',1,'p_body','run.py',70),
+  ('statement -> expression','statement',1,'p_state','run.py',74),
+  ('statement -> statement CR expression','statement',3,'p_state','run.py',75),
+  ('expression -> phrase','expression',1,'p_exp_cr','run.py',82),
+  ('expression -> H1 phrase','expression',2,'p_exp_cr','run.py',83),
+  ('expression -> H2 phrase','expression',2,'p_exp_cr','run.py',84),
+  ('expression -> H3 phrase','expression',2,'p_exp_cr','run.py',85),
+  ('expression -> HR','expression',1,'p_exp_cr','run.py',86),
+  ('expression -> H','expression',1,'p_exp_cr','run.py',87),
+  ('expression -> hr','expression',1,'p_exp_cr','run.py',88),
+  ('phrase -> factor','phrase',1,'p_phrase','run.py',105),
+  ('phrase -> phrase factor','phrase',2,'p_phrase','run.py',106),
+  ('phrase -> phrase SYMBOL','phrase',2,'p_phrase','run.py',107),
+  ('phrase -> phrase phrase','phrase',2,'p_phrase','run.py',108),
+  ('phrase -> strong_fact STRONG','phrase',2,'p_phrase','run.py',109),
+  ('phrase -> em_fact EM','phrase',2,'p_phrase','run.py',110),
+  ('phrase -> code_fact CODE','phrase',2,'p_phrase','run.py',111),
+  ('phrase -> anglebrac_fact RANGLEBRAC','phrase',2,'p_phrase','run.py',112),
+  ('strong_fact -> strong_fact factor','strong_fact',2,'p_strong_fact','run.py',127),
+  ('strong_fact -> STRONG factor','strong_fact',2,'p_strong_fact','run.py',128),
+  ('em_fact -> em_fact factor','em_fact',2,'p_em_fact','run.py',135),
+  ('em_fact -> EM factor','em_fact',2,'p_em_fact','run.py',136),
+  ('hr -> EM EM','hr',2,'p_hr','run.py',143),
+  ('hr -> hr EM','hr',2,'p_hr','run.py',144),
+  ('code_fact -> code_fact factor','code_fact',2,'p_code_fact','run.py',148),
+  ('code_fact -> CODE factor','code_fact',2,'p_code_fact','run.py',149),
+  ('anglebrac_fact -> anglebrac_fact factor','anglebrac_fact',2,'p_anglebrac_fact','run.py',156),
+  ('anglebrac_fact -> LANGLEBRAC factor','anglebrac_fact',2,'p_anglebrac_fact','run.py',157),
+  ('factor -> TEXT','factor',1,'p_factor_text','run.py',176),
 ]

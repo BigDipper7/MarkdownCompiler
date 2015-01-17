@@ -5,9 +5,9 @@ _tabversion = '3.2'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'O \x8c\xb1\xf7I]\xc2\x8e\xf3W\xad\xd6s\xb4X'
+_lr_signature = '\x1bC\xe8\xa9\x8c:f\xc4\xde9\xf8\x81qk_\xef'
     
-_lr_action_items = {'H2':([0,12,],[2,2,]),'H3':([0,12,],[3,3,]),'H1':([0,12,],[4,4,]),'TEXT':([2,3,4,6,],[8,8,8,8,]),'CR':([5,7,8,9,10,11,14,15,],[12,-2,-8,-5,-6,-4,-3,-7,]),'STRONG':([0,8,12,13,],[6,-8,6,15,]),'$end':([1,5,7,8,9,10,11,14,15,],[0,-1,-2,-8,-5,-6,-4,-3,-7,]),}
+_lr_action_items = {'H2':([0,8,14,],[2,2,2,]),'TEXT':([0,2,3,4,8,14,],[5,5,5,5,5,5,]),'H1':([0,8,14,],[4,4,4,]),'H3':([0,8,14,],[3,3,3,]),'CR':([0,5,6,7,8,9,10,11,12,13,14,15,16,],[8,-10,14,-5,8,-9,-2,-7,-8,-6,8,-4,-3,]),'STRONG':([0,8,14,],[9,9,9,]),'$end':([1,5,6,7,9,10,11,12,13,15,16,],[0,-10,-1,-5,-9,-2,-7,-8,-6,-4,-3,]),}
 
 _lr_action = { }
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'body':([0,],[1,]),'expression':([0,12,],[7,14,]),'statement':([0,],[5,]),'factor':([2,3,4,6,],[9,10,11,13,]),}
+_lr_goto_items = {'body':([0,],[1,]),'expression':([0,8,14,],[10,15,16,]),'statement':([0,],[6,]),'factor':([0,2,3,4,8,14,],[7,11,12,13,7,7,]),}
 
 _lr_goto = { }
 for _k, _v in _lr_goto_items.items():
@@ -26,12 +26,14 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> body","S'",1,None,None,None),
-  ('body -> statement','body',1,'p_body','main.py',48),
-  ('statement -> expression','statement',1,'p_state','main.py',52),
-  ('statement -> statement CR expression','statement',3,'p_state','main.py',53),
-  ('expression -> H1 factor','expression',2,'p_exp_cr','main.py',60),
-  ('expression -> H2 factor','expression',2,'p_exp_cr','main.py',61),
-  ('expression -> H3 factor','expression',2,'p_exp_cr','main.py',62),
-  ('expression -> STRONG factor STRONG','expression',3,'p_exp_strong','main.py',71),
-  ('factor -> TEXT','factor',1,'p_factor_text','main.py',75),
+  ('body -> statement','body',1,'p_body','main.py',47),
+  ('statement -> expression','statement',1,'p_state','main.py',51),
+  ('statement -> statement CR expression','statement',3,'p_state','main.py',52),
+  ('expression -> CR expression','expression',2,'p_cr_exp','main.py',59),
+  ('expression -> factor','expression',1,'p_exp_factor','main.py',63),
+  ('expression -> H1 factor','expression',2,'p_exp_title','main.py',67),
+  ('expression -> H2 factor','expression',2,'p_exp_title','main.py',68),
+  ('expression -> H3 factor','expression',2,'p_exp_title','main.py',69),
+  ('expression -> STRONG','expression',1,'p_exp_strong','main.py',78),
+  ('factor -> TEXT','factor',1,'p_factor_text','main.py',82),
 ]

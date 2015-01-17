@@ -1,0 +1,14 @@
+H1 TEXT CR CR H2 TEXT |CR TEXT STRONG TEXT STRONG TEXT CR CR H3 TEXT STRONG TEXT STRONG
+H1 factor
+expression
+statement
+statement CR
+
+
+statement :
+
+
+
+expression : H1 TEXT | H2 TEXT | H3 TEXT
+
+factor : TEXT

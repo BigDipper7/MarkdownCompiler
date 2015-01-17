@@ -7,18 +7,17 @@
 import sys
 
 tokens = (
-    'H1','H2','H3', 'CR', 'TEXT'
-    ,    'STRONG'
+    'H1','H2','H3', 'CR', 'TEXT', 'STRONG'
     )
 
 # Tokens
 t_H1 = r'\#\ '
 t_H2 = r'\#\#\ '
 t_H3 = r'\#\#\#\ '
-t_STRONG = r'\*\*'
+t_STRONG = r'\*\*.+\*\*'
 
 def t_TEXT(t):
-    r'[_a-zA-Z0-9\ \,\.\']+'
+    r'[_a-zA-Z0-9\,\.\'\ ]+'
     t.value = str(t.value)
     return t
 
@@ -50,30 +49,43 @@ def p_body(p):
 
 def p_state(p):
     '''statement : expression
-            | statement CR expression'''
+        | statement expression'''
     if (len(p)==2):
         p[0] = p[1]
-    elif (len(p) == 4):
-        p[0] = str(p[1]) + str(p[3])
+    elif (len(p) == 3):
+        p[0] = str(p[1]) + str(p[2])
 
-def p_exp_cr(p):
+def p_cr_exp(p):
+    '''expression : CR expression
+        |factor'''
+    if (len(p) == 3):
+        p[0] = '<br>' + str(p[2])
+    elif (len(p) == 2):
+        p[0] = str(p[1])
+
+#
+# def p_exp_factor(p):
+#     '''expression : factor'''
+#     p[0] = str(p[1])
+
+def p_exp_title(p):
     '''expression : H1 factor
                 | H2 factor
                 | H3 factor'''
-    if p[1] == '#':
+    if p[1] == '# ':
         p[0] = '<h1>' + str(p[2]) + '</h1>'
-    elif p[1] == '##':
+    elif p[1] == '## ':
         p[0] = '<h2>' + str(p[2]) + '</h2>'
-    elif p[1] == '###':
+    elif p[1] == '### ':
         p[0] = '<h3>' + str(p[2]) + '</h3>'
 
 def p_exp_strong(p):
-    '''expression : STRONG factor STRONG'''
-    p[0] = '<strong>' + str(p[2]) + '</strong>'
+    '''expression : STRONG'''
+    p[0] = '<strong>' + str(p[1])[2:-2] + '</strong>'
 
 def p_factor_text(p):
     "factor : TEXT"
-    p[0] = p[1]
+    p[0] = str(p[1])
 
 def p_error(p):
     if p:
@@ -85,5 +97,5 @@ import ply.yacc as yacc
 yacc.yacc()
 
 if __name__ == '__main__':
-    filename = 'test1.md'
+    filename = 'test001.md'
     yacc.parse(open(filename).read())

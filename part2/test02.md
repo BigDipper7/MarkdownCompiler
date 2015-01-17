@@ -29,8 +29,3 @@ my `mama` always said there's an awful lot you can tell about a person by their 
 + i wish jenny can marry with gump early.
 
 * * *
-'''
-function helloSyntaxHighlighter()
-{
-  return "hi!";
-}'''

@@ -134,9 +134,9 @@ def p_phrase(p):
                 | em_fact EM
                 | code_fact CODE
                 | anglebrac_fact RANGLEBRAC
-                | name brac_fact RBRAC
-                | codeblock_fact CODEBLOCK
-                 '''
+                | name brac_fact RBRAC'''
+                # | codeblock_fact CODEBLOCK
+                #  '''
     if (len(p) == 2):
         p[0] = str(p[1])
     elif p[2] == '**' or p[2] == '__':
@@ -259,21 +259,21 @@ def p_ol(p):
     elif(len(p) == 3):
         p[0] = str(p[1]) + str(p[2])
 
-def p_codeblock_fact(p):
-    '''codeblock_fact : codeblock_fact factor
-        | codeblock_fact CR factor
-        | CODEBLOCK CR factor
-        | CODEBLOCK factor
-        | codeblock_fact SYMBOL
-    '''
-    if(len(p) == 3 and p[1]=='\'\'\''):
-        p[0] = '<pre class=\"brush : js;\">' + str(p[2])
-    elif(len(p) == 4 and p[1]=='\'\'\''):
-        p[0] = '<pre class=\"brush : js;\">' + str(p[3])
-    elif(len(p) == 4):
-        p[0] = p[1] + '<br/>' +str(p[3])
-    else:
-        p[0] = p[1] + str(p[2])
+# def p_codeblock_fact(p):
+#     '''codeblock_fact : codeblock_fact factor
+#         | codeblock_fact CR factor
+#         | CODEBLOCK CR factor
+#         | CODEBLOCK factor
+#         | codeblock_fact SYMBOL
+#     '''
+#     if(len(p) == 3 and p[1]=='\'\'\''):
+#         p[0] = '<pre class=\"brush : js;\">' + str(p[2])
+#     elif(len(p) == 4 and p[1]=='\'\'\''):
+#         p[0] = '<pre class=\"brush : js;\">' + str(p[3])
+#     elif(len(p) == 4):
+#         p[0] = p[1] + '<br/>' +str(p[3])
+#     else:
+#         p[0] = p[1] + str(p[2])
 
 def p_factor_text(p):
     "factor : TEXT"

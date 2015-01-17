@@ -7,7 +7,7 @@
 import sys
 
 tokens = (
-    'H1','H2','H3', 'CR', 'TEXT','STRONG','SYMBOL','EM','HR','H','CODE','LBRAC','RBRAC','LBOXBRAC','RBOXBRAC','LANGLEBRAC','RANGLEBRAC','UL','OL'
+    'H1','H2','H3', 'CR', 'TEXT','STRONG','SYMBOL','EM','HR','H','CODE','LBRAC','RBRAC','LBOXBRAC','RBOXBRAC','LANGLEBRAC','RANGLEBRAC','UL','OL','CODEBLOCK'
     )
 
 # Tokens
@@ -17,7 +17,7 @@ t_H3 = r'\#\#\# '
 
 t_STRONG = r'\*\* |\_\_'
 
-t_SYMBOL = r'[\,\.\!\?\:\;\/]'
+t_SYMBOL = r'[\,\.\!\?\:\;\/\{\}\"]'
 
 t_EM = r'\* |\_'
 
@@ -42,6 +42,8 @@ t_RANGLEBRAC = r'\>'
 t_UL = r'\+'
 
 t_OL= r'\d\.'
+
+t_CODEBLOCK= r'\'\'\''
 
 def t_TEXT(t):
     r'[a-zA-Z\' ]+'
@@ -72,7 +74,14 @@ names = {}
 
 def p_body(p):
     '''body : statement'''
-    print '<body>' + p[1] + '</body>'
+    print '''<head>
+      <script type="text/javascript" src="scripts/shCore.js"></script>
+      <script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+      <link href="styles/shCore.css" rel="stylesheet" type="text/css" />
+      <link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+      <script type="text/javascript">SyntaxHighlighter.all();</script>
+    </head>
+    '''+'<body>' + p[1] + '</body>'
 
 def p_state(p):
     '''statement : expression
@@ -126,6 +135,7 @@ def p_phrase(p):
                 | code_fact CODE
                 | anglebrac_fact RANGLEBRAC
                 | name brac_fact RBRAC
+                | codeblock_fact CODEBLOCK
                  '''
     if (len(p) == 2):
         p[0] = str(p[1])
@@ -137,6 +147,8 @@ def p_phrase(p):
         p[0] = '<code>' + str(p[1]) + '</code>'
     elif p[2] == '>':
         p[0] = '<a href="' + str(p[1]) + '">' + str(p[1]) + '</a>'
+    elif p[2] == '\'\'\'':
+        p[0] = str(p[1]) + '</pre>'
     elif (len(p) == 4):
         p[0] = '<a href="' + str(p[2]) + '">' + str(p[1]) + '</a>'
     elif (len(p) == 3):
@@ -246,6 +258,22 @@ def p_ol(p):
         p[0] = str(p[1])
     elif(len(p) == 3):
         p[0] = str(p[1]) + str(p[2])
+
+def p_codeblock_fact(p):
+    '''codeblock_fact : codeblock_fact factor
+        | codeblock_fact CR factor
+        | CODEBLOCK CR factor
+        | CODEBLOCK factor
+        | codeblock_fact SYMBOL
+    '''
+    if(len(p) == 3 and p[1]=='\'\'\''):
+        p[0] = '<pre class=\"brush : js;\">' + str(p[2])
+    elif(len(p) == 4 and p[1]=='\'\'\''):
+        p[0] = '<pre class=\"brush : js;\">' + str(p[3])
+    elif(len(p) == 4):
+        p[0] = p[1] + '<br/>' +str(p[3])
+    else:
+        p[0] = p[1] + str(p[2])
 
 def p_factor_text(p):
     "factor : TEXT"

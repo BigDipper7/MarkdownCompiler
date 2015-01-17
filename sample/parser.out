@@ -1,0 +1,1859 @@
+Created by PLY version 3.4 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> body
+Rule 1     body -> statement
+Rule 2     statement -> expression
+Rule 3     statement -> statement expression
+Rule 4     expression -> phrase CR
+Rule 5     expression -> H1 phrase CR
+Rule 6     expression -> H2 phrase CR
+Rule 7     expression -> H3 phrase CR
+Rule 8     expression -> HR CR
+Rule 9     expression -> H CR
+Rule 10    expression -> hr CR
+Rule 11    expression -> UL phrase CR
+Rule 12    expression -> ul
+Rule 13    expression -> ol
+Rule 14    phrase -> factor
+Rule 15    phrase -> phrase factor
+Rule 16    phrase -> phrase SYMBOL
+Rule 17    phrase -> phrase phrase
+Rule 18    phrase -> strong_fact STRONG
+Rule 19    phrase -> em_fact EM
+Rule 20    phrase -> code_fact CODE
+Rule 21    phrase -> anglebrac_fact RANGLEBRAC
+Rule 22    phrase -> name brac_fact RBRAC
+Rule 23    strong_fact -> strong_fact factor
+Rule 24    strong_fact -> STRONG factor
+Rule 25    strong_fact -> strong_fact SYMBOL
+Rule 26    em_fact -> em_fact factor
+Rule 27    em_fact -> EM factor
+Rule 28    em_fact -> em_fact SYMBOL
+Rule 29    hr -> EM EM
+Rule 30    hr -> hr EM
+Rule 31    code_fact -> code_fact factor
+Rule 32    code_fact -> CODE factor
+Rule 33    code_fact -> code_fact SYMBOL
+Rule 34    anglebrac_fact -> anglebrac_fact factor
+Rule 35    anglebrac_fact -> LANGLEBRAC factor
+Rule 36    anglebrac_fact -> anglebrac_fact SYMBOL
+Rule 37    name_fact -> name_fact factor
+Rule 38    name_fact -> LBOXBRAC factor
+Rule 39    name -> name_fact RBOXBRAC
+Rule 40    brac_fact -> brac_fact factor
+Rule 41    brac_fact -> LBRAC factor
+Rule 42    brac_fact -> brac_fact SYMBOL
+Rule 43    ul_fact -> ul_fact factor
+Rule 44    ul_fact -> UL factor
+Rule 45    ul_fact -> ul_fact SYMBOL
+Rule 46    ulli -> em_fact CR
+Rule 47    ulli -> ul_fact CR
+Rule 48    ul -> ul ulli
+Rule 49    ul -> ulli
+Rule 50    ol_fact -> ol_fact factor
+Rule 51    ol_fact -> OL factor
+Rule 52    ol_fact -> ol_fact SYMBOL
+Rule 53    olli -> ol_fact CR
+Rule 54    ol -> ol olli
+Rule 55    ol -> olli
+Rule 56    factor -> TEXT
+
+Terminals, with rules where they appear
+
+CODE                 : 20 32
+CR                   : 4 5 6 7 8 9 10 11 46 47 53
+EM                   : 19 27 29 29 30
+H                    : 9
+H1                   : 5
+H2                   : 6
+H3                   : 7
+HR                   : 8
+LANGLEBRAC           : 35
+LBOXBRAC             : 38
+LBRAC                : 41
+OL                   : 51
+RANGLEBRAC           : 21
+RBOXBRAC             : 39
+RBRAC                : 22
+STRONG               : 18 24
+SYMBOL               : 16 25 28 33 36 42 45 52
+TEXT                 : 56
+UL                   : 11 44
+error                : 
+
+Nonterminals, with rules where they appear
+
+anglebrac_fact       : 21 34 36
+body                 : 0
+brac_fact            : 22 40 42
+code_fact            : 20 31 33
+em_fact              : 19 26 28 46
+expression           : 2 3
+factor               : 14 15 23 24 26 27 31 32 34 35 37 38 40 41 43 44 50 51
+hr                   : 10 30
+name                 : 22
+name_fact            : 37 39
+ol                   : 13 54
+ol_fact              : 50 52 53
+olli                 : 54 55
+phrase               : 4 5 6 7 11 15 16 17 17
+statement            : 1 3
+strong_fact          : 18 23 25
+ul                   : 12 48
+ul_fact              : 43 45 47
+ulli                 : 48 49
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . body
+    (1) body -> . statement
+    (2) statement -> . expression
+    (3) statement -> . statement expression
+    (4) expression -> . phrase CR
+    (5) expression -> . H1 phrase CR
+    (6) expression -> . H2 phrase CR
+    (7) expression -> . H3 phrase CR
+    (8) expression -> . HR CR
+    (9) expression -> . H CR
+    (10) expression -> . hr CR
+    (11) expression -> . UL phrase CR
+    (12) expression -> . ul
+    (13) expression -> . ol
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (29) hr -> . EM EM
+    (30) hr -> . hr EM
+    (48) ul -> . ul ulli
+    (49) ul -> . ulli
+    (54) ol -> . ol olli
+    (55) ol -> . olli
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (46) ulli -> . em_fact CR
+    (47) ulli -> . ul_fact CR
+    (53) olli -> . ol_fact CR
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+    (43) ul_fact -> . ul_fact factor
+    (44) ul_fact -> . UL factor
+    (45) ul_fact -> . ul_fact SYMBOL
+    (50) ol_fact -> . ol_fact factor
+    (51) ol_fact -> . OL factor
+    (52) ol_fact -> . ol_fact SYMBOL
+
+    H1              shift and go to state 26
+    H2              shift and go to state 24
+    H3              shift and go to state 25
+    HR              shift and go to state 4
+    H               shift and go to state 18
+    UL              shift and go to state 27
+    EM              shift and go to state 2
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+    OL              shift and go to state 20
+
+    body                           shift and go to state 15
+    em_fact                        shift and go to state 1
+    ol                             shift and go to state 22
+    name                           shift and go to state 23
+    ol_fact                        shift and go to state 16
+    hr                             shift and go to state 17
+    strong_fact                    shift and go to state 10
+    olli                           shift and go to state 11
+    name_fact                      shift and go to state 19
+    ul                             shift and go to state 9
+    ulli                           shift and go to state 28
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    statement                      shift and go to state 13
+    factor                         shift and go to state 14
+    phrase                         shift and go to state 7
+    ul_fact                        shift and go to state 6
+    expression                     shift and go to state 30
+
+state 1
+
+    (19) phrase -> em_fact . EM
+    (26) em_fact -> em_fact . factor
+    (28) em_fact -> em_fact . SYMBOL
+    (46) ulli -> em_fact . CR
+    (56) factor -> . TEXT
+
+    EM              shift and go to state 32
+    SYMBOL          shift and go to state 33
+    CR              shift and go to state 35
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 34
+
+state 2
+
+    (29) hr -> EM . EM
+    (27) em_fact -> EM . factor
+    (56) factor -> . TEXT
+
+    EM              shift and go to state 36
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 37
+
+state 3
+
+    (32) code_fact -> CODE . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 38
+
+state 4
+
+    (8) expression -> HR . CR
+
+    CR              shift and go to state 39
+
+
+state 5
+
+    (56) factor -> TEXT .
+
+    CR              reduce using rule 56 (factor -> TEXT .)
+    SYMBOL          reduce using rule 56 (factor -> TEXT .)
+    TEXT            reduce using rule 56 (factor -> TEXT .)
+    STRONG          reduce using rule 56 (factor -> TEXT .)
+    EM              reduce using rule 56 (factor -> TEXT .)
+    CODE            reduce using rule 56 (factor -> TEXT .)
+    LANGLEBRAC      reduce using rule 56 (factor -> TEXT .)
+    LBOXBRAC        reduce using rule 56 (factor -> TEXT .)
+    RBOXBRAC        reduce using rule 56 (factor -> TEXT .)
+    RBRAC           reduce using rule 56 (factor -> TEXT .)
+    RANGLEBRAC      reduce using rule 56 (factor -> TEXT .)
+
+
+state 6
+
+    (47) ulli -> ul_fact . CR
+    (43) ul_fact -> ul_fact . factor
+    (45) ul_fact -> ul_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    CR              shift and go to state 40
+    SYMBOL          shift and go to state 41
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 42
+
+state 7
+
+    (4) expression -> phrase . CR
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    CR              shift and go to state 48
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 8
+
+    (24) strong_fact -> STRONG . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 49
+
+state 9
+
+    (12) expression -> ul .
+    (48) ul -> ul . ulli
+    (46) ulli -> . em_fact CR
+    (47) ulli -> . ul_fact CR
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (43) ul_fact -> . ul_fact factor
+    (44) ul_fact -> . UL factor
+    (45) ul_fact -> . ul_fact SYMBOL
+
+  ! shift/reduce conflict for EM resolved as shift
+  ! shift/reduce conflict for UL resolved as shift
+    H1              reduce using rule 12 (expression -> ul .)
+    H2              reduce using rule 12 (expression -> ul .)
+    H3              reduce using rule 12 (expression -> ul .)
+    HR              reduce using rule 12 (expression -> ul .)
+    H               reduce using rule 12 (expression -> ul .)
+    TEXT            reduce using rule 12 (expression -> ul .)
+    STRONG          reduce using rule 12 (expression -> ul .)
+    CODE            reduce using rule 12 (expression -> ul .)
+    LANGLEBRAC      reduce using rule 12 (expression -> ul .)
+    LBOXBRAC        reduce using rule 12 (expression -> ul .)
+    OL              reduce using rule 12 (expression -> ul .)
+    $end            reduce using rule 12 (expression -> ul .)
+    EM              shift and go to state 44
+    UL              shift and go to state 51
+
+  ! UL              [ reduce using rule 12 (expression -> ul .) ]
+  ! EM              [ reduce using rule 12 (expression -> ul .) ]
+
+    em_fact                        shift and go to state 50
+    ulli                           shift and go to state 52
+    ul_fact                        shift and go to state 6
+
+state 10
+
+    (18) phrase -> strong_fact . STRONG
+    (23) strong_fact -> strong_fact . factor
+    (25) strong_fact -> strong_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    STRONG          shift and go to state 54
+    SYMBOL          shift and go to state 53
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 55
+
+state 11
+
+    (55) ol -> olli .
+
+    OL              reduce using rule 55 (ol -> olli .)
+    H1              reduce using rule 55 (ol -> olli .)
+    H2              reduce using rule 55 (ol -> olli .)
+    H3              reduce using rule 55 (ol -> olli .)
+    HR              reduce using rule 55 (ol -> olli .)
+    H               reduce using rule 55 (ol -> olli .)
+    UL              reduce using rule 55 (ol -> olli .)
+    EM              reduce using rule 55 (ol -> olli .)
+    TEXT            reduce using rule 55 (ol -> olli .)
+    STRONG          reduce using rule 55 (ol -> olli .)
+    CODE            reduce using rule 55 (ol -> olli .)
+    LANGLEBRAC      reduce using rule 55 (ol -> olli .)
+    LBOXBRAC        reduce using rule 55 (ol -> olli .)
+    $end            reduce using rule 55 (ol -> olli .)
+
+
+state 12
+
+    (35) anglebrac_fact -> LANGLEBRAC . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 56
+
+state 13
+
+    (1) body -> statement .
+    (3) statement -> statement . expression
+    (4) expression -> . phrase CR
+    (5) expression -> . H1 phrase CR
+    (6) expression -> . H2 phrase CR
+    (7) expression -> . H3 phrase CR
+    (8) expression -> . HR CR
+    (9) expression -> . H CR
+    (10) expression -> . hr CR
+    (11) expression -> . UL phrase CR
+    (12) expression -> . ul
+    (13) expression -> . ol
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (29) hr -> . EM EM
+    (30) hr -> . hr EM
+    (48) ul -> . ul ulli
+    (49) ul -> . ulli
+    (54) ol -> . ol olli
+    (55) ol -> . olli
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (46) ulli -> . em_fact CR
+    (47) ulli -> . ul_fact CR
+    (53) olli -> . ol_fact CR
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+    (43) ul_fact -> . ul_fact factor
+    (44) ul_fact -> . UL factor
+    (45) ul_fact -> . ul_fact SYMBOL
+    (50) ol_fact -> . ol_fact factor
+    (51) ol_fact -> . OL factor
+    (52) ol_fact -> . ol_fact SYMBOL
+
+    $end            reduce using rule 1 (body -> statement .)
+    H1              shift and go to state 26
+    H2              shift and go to state 24
+    H3              shift and go to state 25
+    HR              shift and go to state 4
+    H               shift and go to state 18
+    UL              shift and go to state 27
+    EM              shift and go to state 2
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+    OL              shift and go to state 20
+
+    em_fact                        shift and go to state 1
+    olli                           shift and go to state 11
+    ol                             shift and go to state 22
+    name                           shift and go to state 23
+    ol_fact                        shift and go to state 16
+    hr                             shift and go to state 17
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    ul                             shift and go to state 9
+    ulli                           shift and go to state 28
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 14
+    phrase                         shift and go to state 7
+    ul_fact                        shift and go to state 6
+    expression                     shift and go to state 57
+
+state 14
+
+    (14) phrase -> factor .
+
+    CR              reduce using rule 14 (phrase -> factor .)
+    SYMBOL          reduce using rule 14 (phrase -> factor .)
+    TEXT            reduce using rule 14 (phrase -> factor .)
+    STRONG          reduce using rule 14 (phrase -> factor .)
+    EM              reduce using rule 14 (phrase -> factor .)
+    CODE            reduce using rule 14 (phrase -> factor .)
+    LANGLEBRAC      reduce using rule 14 (phrase -> factor .)
+    LBOXBRAC        reduce using rule 14 (phrase -> factor .)
+
+
+state 15
+
+    (0) S' -> body .
+
+
+
+state 16
+
+    (53) olli -> ol_fact . CR
+    (50) ol_fact -> ol_fact . factor
+    (52) ol_fact -> ol_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    CR              shift and go to state 60
+    SYMBOL          shift and go to state 58
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 59
+
+state 17
+
+    (10) expression -> hr . CR
+    (30) hr -> hr . EM
+
+    CR              shift and go to state 61
+    EM              shift and go to state 62
+
+
+state 18
+
+    (9) expression -> H . CR
+
+    CR              shift and go to state 63
+
+
+state 19
+
+    (39) name -> name_fact . RBOXBRAC
+    (37) name_fact -> name_fact . factor
+    (56) factor -> . TEXT
+
+    RBOXBRAC        shift and go to state 65
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 64
+
+state 20
+
+    (51) ol_fact -> OL . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 66
+
+state 21
+
+    (20) phrase -> code_fact . CODE
+    (31) code_fact -> code_fact . factor
+    (33) code_fact -> code_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    CODE            shift and go to state 68
+    SYMBOL          shift and go to state 67
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 69
+
+state 22
+
+    (13) expression -> ol .
+    (54) ol -> ol . olli
+    (53) olli -> . ol_fact CR
+    (50) ol_fact -> . ol_fact factor
+    (51) ol_fact -> . OL factor
+    (52) ol_fact -> . ol_fact SYMBOL
+
+  ! shift/reduce conflict for OL resolved as shift
+    H1              reduce using rule 13 (expression -> ol .)
+    H2              reduce using rule 13 (expression -> ol .)
+    H3              reduce using rule 13 (expression -> ol .)
+    HR              reduce using rule 13 (expression -> ol .)
+    H               reduce using rule 13 (expression -> ol .)
+    UL              reduce using rule 13 (expression -> ol .)
+    EM              reduce using rule 13 (expression -> ol .)
+    TEXT            reduce using rule 13 (expression -> ol .)
+    STRONG          reduce using rule 13 (expression -> ol .)
+    CODE            reduce using rule 13 (expression -> ol .)
+    LANGLEBRAC      reduce using rule 13 (expression -> ol .)
+    LBOXBRAC        reduce using rule 13 (expression -> ol .)
+    $end            reduce using rule 13 (expression -> ol .)
+    OL              shift and go to state 20
+
+  ! OL              [ reduce using rule 13 (expression -> ol .) ]
+
+    olli                           shift and go to state 70
+    ol_fact                        shift and go to state 16
+
+state 23
+
+    (22) phrase -> name . brac_fact RBRAC
+    (40) brac_fact -> . brac_fact factor
+    (41) brac_fact -> . LBRAC factor
+    (42) brac_fact -> . brac_fact SYMBOL
+
+    LBRAC           shift and go to state 71
+
+    brac_fact                      shift and go to state 72
+
+state 24
+
+    (6) expression -> H2 . phrase CR
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 14
+    phrase                         shift and go to state 73
+
+state 25
+
+    (7) expression -> H3 . phrase CR
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 14
+    phrase                         shift and go to state 74
+
+state 26
+
+    (5) expression -> H1 . phrase CR
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 14
+    phrase                         shift and go to state 75
+
+state 27
+
+    (11) expression -> UL . phrase CR
+    (44) ul_fact -> UL . factor
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (56) factor -> . TEXT
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 77
+    phrase                         shift and go to state 76
+
+state 28
+
+    (49) ul -> ulli .
+
+    EM              reduce using rule 49 (ul -> ulli .)
+    UL              reduce using rule 49 (ul -> ulli .)
+    H1              reduce using rule 49 (ul -> ulli .)
+    H2              reduce using rule 49 (ul -> ulli .)
+    H3              reduce using rule 49 (ul -> ulli .)
+    HR              reduce using rule 49 (ul -> ulli .)
+    H               reduce using rule 49 (ul -> ulli .)
+    TEXT            reduce using rule 49 (ul -> ulli .)
+    STRONG          reduce using rule 49 (ul -> ulli .)
+    CODE            reduce using rule 49 (ul -> ulli .)
+    LANGLEBRAC      reduce using rule 49 (ul -> ulli .)
+    LBOXBRAC        reduce using rule 49 (ul -> ulli .)
+    OL              reduce using rule 49 (ul -> ulli .)
+    $end            reduce using rule 49 (ul -> ulli .)
+
+
+state 29
+
+    (21) phrase -> anglebrac_fact . RANGLEBRAC
+    (34) anglebrac_fact -> anglebrac_fact . factor
+    (36) anglebrac_fact -> anglebrac_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    RANGLEBRAC      shift and go to state 79
+    SYMBOL          shift and go to state 78
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 80
+
+state 30
+
+    (2) statement -> expression .
+
+    H1              reduce using rule 2 (statement -> expression .)
+    H2              reduce using rule 2 (statement -> expression .)
+    H3              reduce using rule 2 (statement -> expression .)
+    HR              reduce using rule 2 (statement -> expression .)
+    H               reduce using rule 2 (statement -> expression .)
+    UL              reduce using rule 2 (statement -> expression .)
+    EM              reduce using rule 2 (statement -> expression .)
+    TEXT            reduce using rule 2 (statement -> expression .)
+    STRONG          reduce using rule 2 (statement -> expression .)
+    CODE            reduce using rule 2 (statement -> expression .)
+    LANGLEBRAC      reduce using rule 2 (statement -> expression .)
+    LBOXBRAC        reduce using rule 2 (statement -> expression .)
+    OL              reduce using rule 2 (statement -> expression .)
+    $end            reduce using rule 2 (statement -> expression .)
+
+
+state 31
+
+    (38) name_fact -> LBOXBRAC . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 81
+
+state 32
+
+    (19) phrase -> em_fact EM .
+
+    SYMBOL          reduce using rule 19 (phrase -> em_fact EM .)
+    TEXT            reduce using rule 19 (phrase -> em_fact EM .)
+    STRONG          reduce using rule 19 (phrase -> em_fact EM .)
+    EM              reduce using rule 19 (phrase -> em_fact EM .)
+    CODE            reduce using rule 19 (phrase -> em_fact EM .)
+    LANGLEBRAC      reduce using rule 19 (phrase -> em_fact EM .)
+    LBOXBRAC        reduce using rule 19 (phrase -> em_fact EM .)
+    CR              reduce using rule 19 (phrase -> em_fact EM .)
+
+
+state 33
+
+    (28) em_fact -> em_fact SYMBOL .
+
+    EM              reduce using rule 28 (em_fact -> em_fact SYMBOL .)
+    SYMBOL          reduce using rule 28 (em_fact -> em_fact SYMBOL .)
+    TEXT            reduce using rule 28 (em_fact -> em_fact SYMBOL .)
+    CR              reduce using rule 28 (em_fact -> em_fact SYMBOL .)
+
+
+state 34
+
+    (26) em_fact -> em_fact factor .
+
+    EM              reduce using rule 26 (em_fact -> em_fact factor .)
+    SYMBOL          reduce using rule 26 (em_fact -> em_fact factor .)
+    TEXT            reduce using rule 26 (em_fact -> em_fact factor .)
+    CR              reduce using rule 26 (em_fact -> em_fact factor .)
+
+
+state 35
+
+    (46) ulli -> em_fact CR .
+
+    EM              reduce using rule 46 (ulli -> em_fact CR .)
+    UL              reduce using rule 46 (ulli -> em_fact CR .)
+    H1              reduce using rule 46 (ulli -> em_fact CR .)
+    H2              reduce using rule 46 (ulli -> em_fact CR .)
+    H3              reduce using rule 46 (ulli -> em_fact CR .)
+    HR              reduce using rule 46 (ulli -> em_fact CR .)
+    H               reduce using rule 46 (ulli -> em_fact CR .)
+    TEXT            reduce using rule 46 (ulli -> em_fact CR .)
+    STRONG          reduce using rule 46 (ulli -> em_fact CR .)
+    CODE            reduce using rule 46 (ulli -> em_fact CR .)
+    LANGLEBRAC      reduce using rule 46 (ulli -> em_fact CR .)
+    LBOXBRAC        reduce using rule 46 (ulli -> em_fact CR .)
+    OL              reduce using rule 46 (ulli -> em_fact CR .)
+    $end            reduce using rule 46 (ulli -> em_fact CR .)
+
+
+state 36
+
+    (29) hr -> EM EM .
+
+    CR              reduce using rule 29 (hr -> EM EM .)
+    EM              reduce using rule 29 (hr -> EM EM .)
+
+
+state 37
+
+    (27) em_fact -> EM factor .
+
+    EM              reduce using rule 27 (em_fact -> EM factor .)
+    SYMBOL          reduce using rule 27 (em_fact -> EM factor .)
+    TEXT            reduce using rule 27 (em_fact -> EM factor .)
+    CR              reduce using rule 27 (em_fact -> EM factor .)
+
+
+state 38
+
+    (32) code_fact -> CODE factor .
+
+    CODE            reduce using rule 32 (code_fact -> CODE factor .)
+    SYMBOL          reduce using rule 32 (code_fact -> CODE factor .)
+    TEXT            reduce using rule 32 (code_fact -> CODE factor .)
+
+
+state 39
+
+    (8) expression -> HR CR .
+
+    H1              reduce using rule 8 (expression -> HR CR .)
+    H2              reduce using rule 8 (expression -> HR CR .)
+    H3              reduce using rule 8 (expression -> HR CR .)
+    HR              reduce using rule 8 (expression -> HR CR .)
+    H               reduce using rule 8 (expression -> HR CR .)
+    UL              reduce using rule 8 (expression -> HR CR .)
+    EM              reduce using rule 8 (expression -> HR CR .)
+    TEXT            reduce using rule 8 (expression -> HR CR .)
+    STRONG          reduce using rule 8 (expression -> HR CR .)
+    CODE            reduce using rule 8 (expression -> HR CR .)
+    LANGLEBRAC      reduce using rule 8 (expression -> HR CR .)
+    LBOXBRAC        reduce using rule 8 (expression -> HR CR .)
+    OL              reduce using rule 8 (expression -> HR CR .)
+    $end            reduce using rule 8 (expression -> HR CR .)
+
+
+state 40
+
+    (47) ulli -> ul_fact CR .
+
+    EM              reduce using rule 47 (ulli -> ul_fact CR .)
+    UL              reduce using rule 47 (ulli -> ul_fact CR .)
+    H1              reduce using rule 47 (ulli -> ul_fact CR .)
+    H2              reduce using rule 47 (ulli -> ul_fact CR .)
+    H3              reduce using rule 47 (ulli -> ul_fact CR .)
+    HR              reduce using rule 47 (ulli -> ul_fact CR .)
+    H               reduce using rule 47 (ulli -> ul_fact CR .)
+    TEXT            reduce using rule 47 (ulli -> ul_fact CR .)
+    STRONG          reduce using rule 47 (ulli -> ul_fact CR .)
+    CODE            reduce using rule 47 (ulli -> ul_fact CR .)
+    LANGLEBRAC      reduce using rule 47 (ulli -> ul_fact CR .)
+    LBOXBRAC        reduce using rule 47 (ulli -> ul_fact CR .)
+    OL              reduce using rule 47 (ulli -> ul_fact CR .)
+    $end            reduce using rule 47 (ulli -> ul_fact CR .)
+
+
+state 41
+
+    (45) ul_fact -> ul_fact SYMBOL .
+
+    CR              reduce using rule 45 (ul_fact -> ul_fact SYMBOL .)
+    SYMBOL          reduce using rule 45 (ul_fact -> ul_fact SYMBOL .)
+    TEXT            reduce using rule 45 (ul_fact -> ul_fact SYMBOL .)
+
+
+state 42
+
+    (43) ul_fact -> ul_fact factor .
+
+    CR              reduce using rule 43 (ul_fact -> ul_fact factor .)
+    SYMBOL          reduce using rule 43 (ul_fact -> ul_fact factor .)
+    TEXT            reduce using rule 43 (ul_fact -> ul_fact factor .)
+
+
+state 43
+
+    (19) phrase -> em_fact . EM
+    (26) em_fact -> em_fact . factor
+    (28) em_fact -> em_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    EM              shift and go to state 32
+    SYMBOL          shift and go to state 33
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 34
+
+state 44
+
+    (27) em_fact -> EM . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 37
+
+state 45
+
+    (16) phrase -> phrase SYMBOL .
+
+    SYMBOL          reduce using rule 16 (phrase -> phrase SYMBOL .)
+    TEXT            reduce using rule 16 (phrase -> phrase SYMBOL .)
+    STRONG          reduce using rule 16 (phrase -> phrase SYMBOL .)
+    EM              reduce using rule 16 (phrase -> phrase SYMBOL .)
+    CODE            reduce using rule 16 (phrase -> phrase SYMBOL .)
+    LANGLEBRAC      reduce using rule 16 (phrase -> phrase SYMBOL .)
+    LBOXBRAC        reduce using rule 16 (phrase -> phrase SYMBOL .)
+    CR              reduce using rule 16 (phrase -> phrase SYMBOL .)
+
+
+state 46
+
+    (15) phrase -> phrase factor .
+    (14) phrase -> factor .
+
+  ! reduce/reduce conflict for SYMBOL resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for TEXT resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for STRONG resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for EM resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for CODE resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for LANGLEBRAC resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for LBOXBRAC resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for CR resolved using rule 14 (phrase -> factor .)
+    SYMBOL          reduce using rule 14 (phrase -> factor .)
+    TEXT            reduce using rule 14 (phrase -> factor .)
+    STRONG          reduce using rule 14 (phrase -> factor .)
+    EM              reduce using rule 14 (phrase -> factor .)
+    CODE            reduce using rule 14 (phrase -> factor .)
+    LANGLEBRAC      reduce using rule 14 (phrase -> factor .)
+    LBOXBRAC        reduce using rule 14 (phrase -> factor .)
+    CR              reduce using rule 14 (phrase -> factor .)
+
+  ! SYMBOL          [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! TEXT            [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! STRONG          [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! EM              [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! CODE            [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! LANGLEBRAC      [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! LBOXBRAC        [ reduce using rule 15 (phrase -> phrase factor .) ]
+  ! CR              [ reduce using rule 15 (phrase -> phrase factor .) ]
+
+
+state 47
+
+    (17) phrase -> phrase phrase .
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+  ! shift/reduce conflict for SYMBOL resolved as shift
+  ! shift/reduce conflict for TEXT resolved as shift
+  ! shift/reduce conflict for STRONG resolved as shift
+  ! shift/reduce conflict for EM resolved as shift
+  ! shift/reduce conflict for CODE resolved as shift
+  ! shift/reduce conflict for LANGLEBRAC resolved as shift
+  ! shift/reduce conflict for LBOXBRAC resolved as shift
+    CR              reduce using rule 17 (phrase -> phrase phrase .)
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+  ! SYMBOL          [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! TEXT            [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! STRONG          [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! EM              [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! CODE            [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! LANGLEBRAC      [ reduce using rule 17 (phrase -> phrase phrase .) ]
+  ! LBOXBRAC        [ reduce using rule 17 (phrase -> phrase phrase .) ]
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 48
+
+    (4) expression -> phrase CR .
+
+    H1              reduce using rule 4 (expression -> phrase CR .)
+    H2              reduce using rule 4 (expression -> phrase CR .)
+    H3              reduce using rule 4 (expression -> phrase CR .)
+    HR              reduce using rule 4 (expression -> phrase CR .)
+    H               reduce using rule 4 (expression -> phrase CR .)
+    UL              reduce using rule 4 (expression -> phrase CR .)
+    EM              reduce using rule 4 (expression -> phrase CR .)
+    TEXT            reduce using rule 4 (expression -> phrase CR .)
+    STRONG          reduce using rule 4 (expression -> phrase CR .)
+    CODE            reduce using rule 4 (expression -> phrase CR .)
+    LANGLEBRAC      reduce using rule 4 (expression -> phrase CR .)
+    LBOXBRAC        reduce using rule 4 (expression -> phrase CR .)
+    OL              reduce using rule 4 (expression -> phrase CR .)
+    $end            reduce using rule 4 (expression -> phrase CR .)
+
+
+state 49
+
+    (24) strong_fact -> STRONG factor .
+
+    STRONG          reduce using rule 24 (strong_fact -> STRONG factor .)
+    SYMBOL          reduce using rule 24 (strong_fact -> STRONG factor .)
+    TEXT            reduce using rule 24 (strong_fact -> STRONG factor .)
+
+
+state 50
+
+    (46) ulli -> em_fact . CR
+    (26) em_fact -> em_fact . factor
+    (28) em_fact -> em_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    CR              shift and go to state 35
+    SYMBOL          shift and go to state 33
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 34
+
+state 51
+
+    (44) ul_fact -> UL . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 82
+
+state 52
+
+    (48) ul -> ul ulli .
+
+    EM              reduce using rule 48 (ul -> ul ulli .)
+    UL              reduce using rule 48 (ul -> ul ulli .)
+    H1              reduce using rule 48 (ul -> ul ulli .)
+    H2              reduce using rule 48 (ul -> ul ulli .)
+    H3              reduce using rule 48 (ul -> ul ulli .)
+    HR              reduce using rule 48 (ul -> ul ulli .)
+    H               reduce using rule 48 (ul -> ul ulli .)
+    TEXT            reduce using rule 48 (ul -> ul ulli .)
+    STRONG          reduce using rule 48 (ul -> ul ulli .)
+    CODE            reduce using rule 48 (ul -> ul ulli .)
+    LANGLEBRAC      reduce using rule 48 (ul -> ul ulli .)
+    LBOXBRAC        reduce using rule 48 (ul -> ul ulli .)
+    OL              reduce using rule 48 (ul -> ul ulli .)
+    $end            reduce using rule 48 (ul -> ul ulli .)
+
+
+state 53
+
+    (25) strong_fact -> strong_fact SYMBOL .
+
+    STRONG          reduce using rule 25 (strong_fact -> strong_fact SYMBOL .)
+    SYMBOL          reduce using rule 25 (strong_fact -> strong_fact SYMBOL .)
+    TEXT            reduce using rule 25 (strong_fact -> strong_fact SYMBOL .)
+
+
+state 54
+
+    (18) phrase -> strong_fact STRONG .
+
+    SYMBOL          reduce using rule 18 (phrase -> strong_fact STRONG .)
+    TEXT            reduce using rule 18 (phrase -> strong_fact STRONG .)
+    STRONG          reduce using rule 18 (phrase -> strong_fact STRONG .)
+    EM              reduce using rule 18 (phrase -> strong_fact STRONG .)
+    CODE            reduce using rule 18 (phrase -> strong_fact STRONG .)
+    LANGLEBRAC      reduce using rule 18 (phrase -> strong_fact STRONG .)
+    LBOXBRAC        reduce using rule 18 (phrase -> strong_fact STRONG .)
+    CR              reduce using rule 18 (phrase -> strong_fact STRONG .)
+
+
+state 55
+
+    (23) strong_fact -> strong_fact factor .
+
+    STRONG          reduce using rule 23 (strong_fact -> strong_fact factor .)
+    SYMBOL          reduce using rule 23 (strong_fact -> strong_fact factor .)
+    TEXT            reduce using rule 23 (strong_fact -> strong_fact factor .)
+
+
+state 56
+
+    (35) anglebrac_fact -> LANGLEBRAC factor .
+
+    RANGLEBRAC      reduce using rule 35 (anglebrac_fact -> LANGLEBRAC factor .)
+    SYMBOL          reduce using rule 35 (anglebrac_fact -> LANGLEBRAC factor .)
+    TEXT            reduce using rule 35 (anglebrac_fact -> LANGLEBRAC factor .)
+
+
+state 57
+
+    (3) statement -> statement expression .
+
+    H1              reduce using rule 3 (statement -> statement expression .)
+    H2              reduce using rule 3 (statement -> statement expression .)
+    H3              reduce using rule 3 (statement -> statement expression .)
+    HR              reduce using rule 3 (statement -> statement expression .)
+    H               reduce using rule 3 (statement -> statement expression .)
+    UL              reduce using rule 3 (statement -> statement expression .)
+    EM              reduce using rule 3 (statement -> statement expression .)
+    TEXT            reduce using rule 3 (statement -> statement expression .)
+    STRONG          reduce using rule 3 (statement -> statement expression .)
+    CODE            reduce using rule 3 (statement -> statement expression .)
+    LANGLEBRAC      reduce using rule 3 (statement -> statement expression .)
+    LBOXBRAC        reduce using rule 3 (statement -> statement expression .)
+    OL              reduce using rule 3 (statement -> statement expression .)
+    $end            reduce using rule 3 (statement -> statement expression .)
+
+
+state 58
+
+    (52) ol_fact -> ol_fact SYMBOL .
+
+    CR              reduce using rule 52 (ol_fact -> ol_fact SYMBOL .)
+    SYMBOL          reduce using rule 52 (ol_fact -> ol_fact SYMBOL .)
+    TEXT            reduce using rule 52 (ol_fact -> ol_fact SYMBOL .)
+
+
+state 59
+
+    (50) ol_fact -> ol_fact factor .
+
+    CR              reduce using rule 50 (ol_fact -> ol_fact factor .)
+    SYMBOL          reduce using rule 50 (ol_fact -> ol_fact factor .)
+    TEXT            reduce using rule 50 (ol_fact -> ol_fact factor .)
+
+
+state 60
+
+    (53) olli -> ol_fact CR .
+
+    OL              reduce using rule 53 (olli -> ol_fact CR .)
+    H1              reduce using rule 53 (olli -> ol_fact CR .)
+    H2              reduce using rule 53 (olli -> ol_fact CR .)
+    H3              reduce using rule 53 (olli -> ol_fact CR .)
+    HR              reduce using rule 53 (olli -> ol_fact CR .)
+    H               reduce using rule 53 (olli -> ol_fact CR .)
+    UL              reduce using rule 53 (olli -> ol_fact CR .)
+    EM              reduce using rule 53 (olli -> ol_fact CR .)
+    TEXT            reduce using rule 53 (olli -> ol_fact CR .)
+    STRONG          reduce using rule 53 (olli -> ol_fact CR .)
+    CODE            reduce using rule 53 (olli -> ol_fact CR .)
+    LANGLEBRAC      reduce using rule 53 (olli -> ol_fact CR .)
+    LBOXBRAC        reduce using rule 53 (olli -> ol_fact CR .)
+    $end            reduce using rule 53 (olli -> ol_fact CR .)
+
+
+state 61
+
+    (10) expression -> hr CR .
+
+    H1              reduce using rule 10 (expression -> hr CR .)
+    H2              reduce using rule 10 (expression -> hr CR .)
+    H3              reduce using rule 10 (expression -> hr CR .)
+    HR              reduce using rule 10 (expression -> hr CR .)
+    H               reduce using rule 10 (expression -> hr CR .)
+    UL              reduce using rule 10 (expression -> hr CR .)
+    EM              reduce using rule 10 (expression -> hr CR .)
+    TEXT            reduce using rule 10 (expression -> hr CR .)
+    STRONG          reduce using rule 10 (expression -> hr CR .)
+    CODE            reduce using rule 10 (expression -> hr CR .)
+    LANGLEBRAC      reduce using rule 10 (expression -> hr CR .)
+    LBOXBRAC        reduce using rule 10 (expression -> hr CR .)
+    OL              reduce using rule 10 (expression -> hr CR .)
+    $end            reduce using rule 10 (expression -> hr CR .)
+
+
+state 62
+
+    (30) hr -> hr EM .
+
+    CR              reduce using rule 30 (hr -> hr EM .)
+    EM              reduce using rule 30 (hr -> hr EM .)
+
+
+state 63
+
+    (9) expression -> H CR .
+
+    H1              reduce using rule 9 (expression -> H CR .)
+    H2              reduce using rule 9 (expression -> H CR .)
+    H3              reduce using rule 9 (expression -> H CR .)
+    HR              reduce using rule 9 (expression -> H CR .)
+    H               reduce using rule 9 (expression -> H CR .)
+    UL              reduce using rule 9 (expression -> H CR .)
+    EM              reduce using rule 9 (expression -> H CR .)
+    TEXT            reduce using rule 9 (expression -> H CR .)
+    STRONG          reduce using rule 9 (expression -> H CR .)
+    CODE            reduce using rule 9 (expression -> H CR .)
+    LANGLEBRAC      reduce using rule 9 (expression -> H CR .)
+    LBOXBRAC        reduce using rule 9 (expression -> H CR .)
+    OL              reduce using rule 9 (expression -> H CR .)
+    $end            reduce using rule 9 (expression -> H CR .)
+
+
+state 64
+
+    (37) name_fact -> name_fact factor .
+
+    RBOXBRAC        reduce using rule 37 (name_fact -> name_fact factor .)
+    TEXT            reduce using rule 37 (name_fact -> name_fact factor .)
+
+
+state 65
+
+    (39) name -> name_fact RBOXBRAC .
+
+    LBRAC           reduce using rule 39 (name -> name_fact RBOXBRAC .)
+
+
+state 66
+
+    (51) ol_fact -> OL factor .
+
+    CR              reduce using rule 51 (ol_fact -> OL factor .)
+    SYMBOL          reduce using rule 51 (ol_fact -> OL factor .)
+    TEXT            reduce using rule 51 (ol_fact -> OL factor .)
+
+
+state 67
+
+    (33) code_fact -> code_fact SYMBOL .
+
+    CODE            reduce using rule 33 (code_fact -> code_fact SYMBOL .)
+    SYMBOL          reduce using rule 33 (code_fact -> code_fact SYMBOL .)
+    TEXT            reduce using rule 33 (code_fact -> code_fact SYMBOL .)
+
+
+state 68
+
+    (20) phrase -> code_fact CODE .
+
+    SYMBOL          reduce using rule 20 (phrase -> code_fact CODE .)
+    TEXT            reduce using rule 20 (phrase -> code_fact CODE .)
+    STRONG          reduce using rule 20 (phrase -> code_fact CODE .)
+    EM              reduce using rule 20 (phrase -> code_fact CODE .)
+    CODE            reduce using rule 20 (phrase -> code_fact CODE .)
+    LANGLEBRAC      reduce using rule 20 (phrase -> code_fact CODE .)
+    LBOXBRAC        reduce using rule 20 (phrase -> code_fact CODE .)
+    CR              reduce using rule 20 (phrase -> code_fact CODE .)
+
+
+state 69
+
+    (31) code_fact -> code_fact factor .
+
+    CODE            reduce using rule 31 (code_fact -> code_fact factor .)
+    SYMBOL          reduce using rule 31 (code_fact -> code_fact factor .)
+    TEXT            reduce using rule 31 (code_fact -> code_fact factor .)
+
+
+state 70
+
+    (54) ol -> ol olli .
+
+    OL              reduce using rule 54 (ol -> ol olli .)
+    H1              reduce using rule 54 (ol -> ol olli .)
+    H2              reduce using rule 54 (ol -> ol olli .)
+    H3              reduce using rule 54 (ol -> ol olli .)
+    HR              reduce using rule 54 (ol -> ol olli .)
+    H               reduce using rule 54 (ol -> ol olli .)
+    UL              reduce using rule 54 (ol -> ol olli .)
+    EM              reduce using rule 54 (ol -> ol olli .)
+    TEXT            reduce using rule 54 (ol -> ol olli .)
+    STRONG          reduce using rule 54 (ol -> ol olli .)
+    CODE            reduce using rule 54 (ol -> ol olli .)
+    LANGLEBRAC      reduce using rule 54 (ol -> ol olli .)
+    LBOXBRAC        reduce using rule 54 (ol -> ol olli .)
+    $end            reduce using rule 54 (ol -> ol olli .)
+
+
+state 71
+
+    (41) brac_fact -> LBRAC . factor
+    (56) factor -> . TEXT
+
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 83
+
+state 72
+
+    (22) phrase -> name brac_fact . RBRAC
+    (40) brac_fact -> brac_fact . factor
+    (42) brac_fact -> brac_fact . SYMBOL
+    (56) factor -> . TEXT
+
+    RBRAC           shift and go to state 84
+    SYMBOL          shift and go to state 85
+    TEXT            shift and go to state 5
+
+    factor                         shift and go to state 86
+
+state 73
+
+    (6) expression -> H2 phrase . CR
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    CR              shift and go to state 87
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 74
+
+    (7) expression -> H3 phrase . CR
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    CR              shift and go to state 88
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 75
+
+    (5) expression -> H1 phrase . CR
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    CR              shift and go to state 89
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 76
+
+    (11) expression -> UL phrase . CR
+    (15) phrase -> phrase . factor
+    (16) phrase -> phrase . SYMBOL
+    (17) phrase -> phrase . phrase
+    (56) factor -> . TEXT
+    (14) phrase -> . factor
+    (15) phrase -> . phrase factor
+    (16) phrase -> . phrase SYMBOL
+    (17) phrase -> . phrase phrase
+    (18) phrase -> . strong_fact STRONG
+    (19) phrase -> . em_fact EM
+    (20) phrase -> . code_fact CODE
+    (21) phrase -> . anglebrac_fact RANGLEBRAC
+    (22) phrase -> . name brac_fact RBRAC
+    (23) strong_fact -> . strong_fact factor
+    (24) strong_fact -> . STRONG factor
+    (25) strong_fact -> . strong_fact SYMBOL
+    (26) em_fact -> . em_fact factor
+    (27) em_fact -> . EM factor
+    (28) em_fact -> . em_fact SYMBOL
+    (31) code_fact -> . code_fact factor
+    (32) code_fact -> . CODE factor
+    (33) code_fact -> . code_fact SYMBOL
+    (34) anglebrac_fact -> . anglebrac_fact factor
+    (35) anglebrac_fact -> . LANGLEBRAC factor
+    (36) anglebrac_fact -> . anglebrac_fact SYMBOL
+    (39) name -> . name_fact RBOXBRAC
+    (37) name_fact -> . name_fact factor
+    (38) name_fact -> . LBOXBRAC factor
+
+    CR              shift and go to state 90
+    SYMBOL          shift and go to state 45
+    TEXT            shift and go to state 5
+    STRONG          shift and go to state 8
+    EM              shift and go to state 44
+    CODE            shift and go to state 3
+    LANGLEBRAC      shift and go to state 12
+    LBOXBRAC        shift and go to state 31
+
+    em_fact                        shift and go to state 43
+    name                           shift and go to state 23
+    strong_fact                    shift and go to state 10
+    name_fact                      shift and go to state 19
+    anglebrac_fact                 shift and go to state 29
+    code_fact                      shift and go to state 21
+    factor                         shift and go to state 46
+    phrase                         shift and go to state 47
+
+state 77
+
+    (44) ul_fact -> UL factor .
+    (14) phrase -> factor .
+
+  ! reduce/reduce conflict for CR resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for SYMBOL resolved using rule 14 (phrase -> factor .)
+  ! reduce/reduce conflict for TEXT resolved using rule 14 (phrase -> factor .)
+    CR              reduce using rule 14 (phrase -> factor .)
+    SYMBOL          reduce using rule 14 (phrase -> factor .)
+    TEXT            reduce using rule 14 (phrase -> factor .)
+    STRONG          reduce using rule 14 (phrase -> factor .)
+    EM              reduce using rule 14 (phrase -> factor .)
+    CODE            reduce using rule 14 (phrase -> factor .)
+    LANGLEBRAC      reduce using rule 14 (phrase -> factor .)
+    LBOXBRAC        reduce using rule 14 (phrase -> factor .)
+
+  ! CR              [ reduce using rule 44 (ul_fact -> UL factor .) ]
+  ! SYMBOL          [ reduce using rule 44 (ul_fact -> UL factor .) ]
+  ! TEXT            [ reduce using rule 44 (ul_fact -> UL factor .) ]
+
+
+state 78
+
+    (36) anglebrac_fact -> anglebrac_fact SYMBOL .
+
+    RANGLEBRAC      reduce using rule 36 (anglebrac_fact -> anglebrac_fact SYMBOL .)
+    SYMBOL          reduce using rule 36 (anglebrac_fact -> anglebrac_fact SYMBOL .)
+    TEXT            reduce using rule 36 (anglebrac_fact -> anglebrac_fact SYMBOL .)
+
+
+state 79
+
+    (21) phrase -> anglebrac_fact RANGLEBRAC .
+
+    SYMBOL          reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    TEXT            reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    STRONG          reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    EM              reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    CODE            reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    LANGLEBRAC      reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    LBOXBRAC        reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+    CR              reduce using rule 21 (phrase -> anglebrac_fact RANGLEBRAC .)
+
+
+state 80
+
+    (34) anglebrac_fact -> anglebrac_fact factor .
+
+    RANGLEBRAC      reduce using rule 34 (anglebrac_fact -> anglebrac_fact factor .)
+    SYMBOL          reduce using rule 34 (anglebrac_fact -> anglebrac_fact factor .)
+    TEXT            reduce using rule 34 (anglebrac_fact -> anglebrac_fact factor .)
+
+
+state 81
+
+    (38) name_fact -> LBOXBRAC factor .
+
+    RBOXBRAC        reduce using rule 38 (name_fact -> LBOXBRAC factor .)
+    TEXT            reduce using rule 38 (name_fact -> LBOXBRAC factor .)
+
+
+state 82
+
+    (44) ul_fact -> UL factor .
+
+    CR              reduce using rule 44 (ul_fact -> UL factor .)
+    SYMBOL          reduce using rule 44 (ul_fact -> UL factor .)
+    TEXT            reduce using rule 44 (ul_fact -> UL factor .)
+
+
+state 83
+
+    (41) brac_fact -> LBRAC factor .
+
+    RBRAC           reduce using rule 41 (brac_fact -> LBRAC factor .)
+    SYMBOL          reduce using rule 41 (brac_fact -> LBRAC factor .)
+    TEXT            reduce using rule 41 (brac_fact -> LBRAC factor .)
+
+
+state 84
+
+    (22) phrase -> name brac_fact RBRAC .
+
+    SYMBOL          reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    TEXT            reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    STRONG          reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    EM              reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    CODE            reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    LANGLEBRAC      reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    LBOXBRAC        reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+    CR              reduce using rule 22 (phrase -> name brac_fact RBRAC .)
+
+
+state 85
+
+    (42) brac_fact -> brac_fact SYMBOL .
+
+    RBRAC           reduce using rule 42 (brac_fact -> brac_fact SYMBOL .)
+    SYMBOL          reduce using rule 42 (brac_fact -> brac_fact SYMBOL .)
+    TEXT            reduce using rule 42 (brac_fact -> brac_fact SYMBOL .)
+
+
+state 86
+
+    (40) brac_fact -> brac_fact factor .
+
+    RBRAC           reduce using rule 40 (brac_fact -> brac_fact factor .)
+    SYMBOL          reduce using rule 40 (brac_fact -> brac_fact factor .)
+    TEXT            reduce using rule 40 (brac_fact -> brac_fact factor .)
+
+
+state 87
+
+    (6) expression -> H2 phrase CR .
+
+    H1              reduce using rule 6 (expression -> H2 phrase CR .)
+    H2              reduce using rule 6 (expression -> H2 phrase CR .)
+    H3              reduce using rule 6 (expression -> H2 phrase CR .)
+    HR              reduce using rule 6 (expression -> H2 phrase CR .)
+    H               reduce using rule 6 (expression -> H2 phrase CR .)
+    UL              reduce using rule 6 (expression -> H2 phrase CR .)
+    EM              reduce using rule 6 (expression -> H2 phrase CR .)
+    TEXT            reduce using rule 6 (expression -> H2 phrase CR .)
+    STRONG          reduce using rule 6 (expression -> H2 phrase CR .)
+    CODE            reduce using rule 6 (expression -> H2 phrase CR .)
+    LANGLEBRAC      reduce using rule 6 (expression -> H2 phrase CR .)
+    LBOXBRAC        reduce using rule 6 (expression -> H2 phrase CR .)
+    OL              reduce using rule 6 (expression -> H2 phrase CR .)
+    $end            reduce using rule 6 (expression -> H2 phrase CR .)
+
+
+state 88
+
+    (7) expression -> H3 phrase CR .
+
+    H1              reduce using rule 7 (expression -> H3 phrase CR .)
+    H2              reduce using rule 7 (expression -> H3 phrase CR .)
+    H3              reduce using rule 7 (expression -> H3 phrase CR .)
+    HR              reduce using rule 7 (expression -> H3 phrase CR .)
+    H               reduce using rule 7 (expression -> H3 phrase CR .)
+    UL              reduce using rule 7 (expression -> H3 phrase CR .)
+    EM              reduce using rule 7 (expression -> H3 phrase CR .)
+    TEXT            reduce using rule 7 (expression -> H3 phrase CR .)
+    STRONG          reduce using rule 7 (expression -> H3 phrase CR .)
+    CODE            reduce using rule 7 (expression -> H3 phrase CR .)
+    LANGLEBRAC      reduce using rule 7 (expression -> H3 phrase CR .)
+    LBOXBRAC        reduce using rule 7 (expression -> H3 phrase CR .)
+    OL              reduce using rule 7 (expression -> H3 phrase CR .)
+    $end            reduce using rule 7 (expression -> H3 phrase CR .)
+
+
+state 89
+
+    (5) expression -> H1 phrase CR .
+
+    H1              reduce using rule 5 (expression -> H1 phrase CR .)
+    H2              reduce using rule 5 (expression -> H1 phrase CR .)
+    H3              reduce using rule 5 (expression -> H1 phrase CR .)
+    HR              reduce using rule 5 (expression -> H1 phrase CR .)
+    H               reduce using rule 5 (expression -> H1 phrase CR .)
+    UL              reduce using rule 5 (expression -> H1 phrase CR .)
+    EM              reduce using rule 5 (expression -> H1 phrase CR .)
+    TEXT            reduce using rule 5 (expression -> H1 phrase CR .)
+    STRONG          reduce using rule 5 (expression -> H1 phrase CR .)
+    CODE            reduce using rule 5 (expression -> H1 phrase CR .)
+    LANGLEBRAC      reduce using rule 5 (expression -> H1 phrase CR .)
+    LBOXBRAC        reduce using rule 5 (expression -> H1 phrase CR .)
+    OL              reduce using rule 5 (expression -> H1 phrase CR .)
+    $end            reduce using rule 5 (expression -> H1 phrase CR .)
+
+
+state 90
+
+    (11) expression -> UL phrase CR .
+
+    H1              reduce using rule 11 (expression -> UL phrase CR .)
+    H2              reduce using rule 11 (expression -> UL phrase CR .)
+    H3              reduce using rule 11 (expression -> UL phrase CR .)
+    HR              reduce using rule 11 (expression -> UL phrase CR .)
+    H               reduce using rule 11 (expression -> UL phrase CR .)
+    UL              reduce using rule 11 (expression -> UL phrase CR .)
+    EM              reduce using rule 11 (expression -> UL phrase CR .)
+    TEXT            reduce using rule 11 (expression -> UL phrase CR .)
+    STRONG          reduce using rule 11 (expression -> UL phrase CR .)
+    CODE            reduce using rule 11 (expression -> UL phrase CR .)
+    LANGLEBRAC      reduce using rule 11 (expression -> UL phrase CR .)
+    LBOXBRAC        reduce using rule 11 (expression -> UL phrase CR .)
+    OL              reduce using rule 11 (expression -> UL phrase CR .)
+    $end            reduce using rule 11 (expression -> UL phrase CR .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for EM in state 9 resolved as shift
+WARNING: shift/reduce conflict for UL in state 9 resolved as shift
+WARNING: shift/reduce conflict for OL in state 22 resolved as shift
+WARNING: shift/reduce conflict for SYMBOL in state 47 resolved as shift
+WARNING: shift/reduce conflict for TEXT in state 47 resolved as shift
+WARNING: shift/reduce conflict for STRONG in state 47 resolved as shift
+WARNING: shift/reduce conflict for EM in state 47 resolved as shift
+WARNING: shift/reduce conflict for CODE in state 47 resolved as shift
+WARNING: shift/reduce conflict for LANGLEBRAC in state 47 resolved as shift
+WARNING: shift/reduce conflict for LBOXBRAC in state 47 resolved as shift
+WARNING: reduce/reduce conflict in state 46 resolved using rule (phrase -> factor)
+WARNING: rejected rule (phrase -> phrase factor) in state 46
+WARNING: reduce/reduce conflict in state 77 resolved using rule (phrase -> factor)
+WARNING: rejected rule (ul_fact -> UL factor) in state 77
+WARNING: Rule (phrase -> phrase factor) is never reduced
